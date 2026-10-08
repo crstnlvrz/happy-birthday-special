@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday to My Dearest Friend!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        roseGold: '#B76E79',
+                        roseGoldLight: '#F7E7E8',
+                        warmCream: '#FFFDF9',
+                        softPink: '#FCE7F0',
+                        amberGold: '#D4AF37',
+                        dustyRose: '#C08081'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        cursive: ['Dancing Script', 'cursive'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FFFDF9;
+            color: #4A3E3D;
+            overflow-x: hidden;
+        }
+
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(183, 110, 121, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(247, 231, 232, 0.8);
+            box-shadow: 0 10px 30px -5px rgba(183, 110, 121, 0.08);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(183, 110, 121, 0.18);
+        }
+
+        /* Floating Hearts Particles */
+        .heart-particle {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 8s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        /* Envelope Styles */
+        .envelope-wrapper {
+            perspective: 1000px;
+        }
+
+        .envelope {
+            position: relative;
+            background: #fdf6f0;
+            border: 2px solid #E8C5C8;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: #f7e7e8;
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            transform-origin: top;
+            transition: transform 0.5s ease;
+            z-index: 5;
+            border-bottom: 2px solid #e0b0b4;
+        }
+
+        /* Shimmer Effect */
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFDF9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E8C5C8;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B76E79;
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern relative min-h-screen font-sans selection:bg-roseGoldLight selection:text-roseGold">
+
+    <!-- Audio Player Controller -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="musicToggle" onclick="toggleAudio()" class="glass-card px-4 py-2.5 rounded-full flex items-center space-x-2 text-xs font-semibold text-roseGold border border-roseGoldLight shadow-md hover:bg-white transition-all group">
+            <span class="relative flex h-3 w-3">
+              <span id="musicPing" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-roseGold opacity-75 hidden"></span>
+              <span id="musicDot" class="relative inline-flex rounded-full h-3 w-3 bg-gray-400"></span>
+            </span>
+            <i id="musicIcon" class="fas fa-music text-roseGold group-hover:rotate-12 transition-transform"></i>
+            <span id="musicText">Play Music</span>
+        </button>
+    </div>
+
+    <!-- Floating Background Particles Container -->
+    <div id="particles-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16">
+
+        <!-- 1. HERO HEADER SECTION -->
+        <header class="text-center space-y-6 pt-6">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-card text-roseGold text-xs sm:text-sm font-medium tracking-wide border border-roseGoldLight shadow-sm">
+                <i class="fas fa-sparkles text-amberGold"></i>
+                <span>Celebrating Someone Really Special</span>
+                <i class="fas fa-sparkles text-amberGold"></i>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-cursive font-bold text-gray-800 tracking-wide leading-tight">
+                Happy Birthday, <span class="bg-gradient-to-r from-roseGold via-dustyRose to-amberGold bg-clip-text text-transparent">My Dear Friend!</span> ✨
+            </h1>
+
+            <p class="max-w-xl mx-auto text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
+                Years of beautiful memories, endless chats, and a lifelong bond. Enjoy and I Love You Always!❤️
+            </p>
+
+            <div class="pt-2 flex justify-center space-x-3">
+                <a href="#letter" class="px-6 py-3 rounded-full bg-roseGold text-white text-sm font-semibold shadow-lg shadow-roseGold/20 hover:bg-dustyRose transition-all duration-300 transform hover:-translate-y-0.5">
+                    Read My Message <i class="fas fa-envelope-open-text ml-2"></i>
+                </a>
+                <a href="#gallery" class="px-6 py-3 rounded-full glass-card text-gray-700 text-sm font-semibold border border-roseGoldLight hover:bg-white transition-all duration-300">
+                    See Memories <i class="fas fa-images ml-2 text-roseGold"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- 2. PHOTO GALLERY SECTION -->
+        <section id="gallery" class="space-y-6">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-800">Our Photo Vault</h2>
+                <p class="text-xs sm:text-sm text-gray-500">Click any photo to view in full resolution</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+                <!-- Photo Items -->
+                <div onclick="openLightbox('DSC_0183.JPG')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <img src="DSC_0183.JPG" alt="Memory photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View Photo</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('DSC_0264.JPG')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <img src="DSC_0264.JPG" alt="Memory photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View Photo</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('DSC_0265.JPG')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <img src="DSC_0265.JPG" alt="Memory photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View Photo</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('IMG_0037.JPG')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <img src="IMG_0037.JPG" alt="Memory photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View Photo</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('IMG_0036.JPG')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <img src="IMG_0036.JPG" alt="Memory photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View Photo</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('IIMG_0038.JPG')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <img src="IMG_0038.JPG" alt="Memory photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View Photo</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('IMG_0087.JPG')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <img src="IMG_0087.JPG" alt="Memory photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View Photo</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('IMG_0101.JPG')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <img src="IMG_0101.JPG" alt="Memory photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View Photo</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('IMG_0107.JPG')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <img src="IMG_0107.JG" alt="Memory photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View Photo</span>
+                    </div>
+                </div>
+
+                <div onclick="openLightbox('DSC_0183.JPG')" class="group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-1 sm:col-span-1">
+                    <img src="DSC_0183.JPG" alt="Memory photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                        <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View Photo</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. HEARTFELT TAGLISH LETTER CARD -->
+        <section id="letter" class="space-y-6 pt-4">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-800">A Heartfelt Message For You</h2>
+                <p class="text-xs sm:text-sm text-gray-500">Tap the card below to open your birthday letter</p>
+            </div>
+
+            <div id="letterCard" onclick="toggleLetter()" class="glass-card rounded-3xl p-6 sm:p-10 cursor-pointer border border-roseGoldLight shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group">
+                <!-- Decorative Top Ribbon -->
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-roseGoldLight to-transparent rounded-bl-full pointer-events-none"></div>
+
+                <div class="flex items-center justify-between pb-6 border-b border-roseGoldLight/60">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-roseGoldLight text-roseGold flex items-center justify-center font-bold">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-gray-800 text-base sm:text-lg"> Para Sa’yo</h3>
+                            <p class="text-xs text-roseGold font-medium">Click to expand/collapse message</p>
+                        </div>
+                    </div>
+                    <span class="text-xs px-3 py-1 rounded-full bg-roseGoldLight text-roseGold font-semibold group-hover:bg-roseGold group-hover:text-white transition-colors">
+                        Read <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                    </span>
+                </div>
+
+                <!-- Letter Content -->
+                <div id="letterBody" class="space-y-4 pt-6 text-sm sm:text-base text-gray-700 leading-relaxed font-sans transition-all duration-500">
+                    <p class="font-semibold text-roseGold font-serif text-lg">Happy Birthday, Rochelle!</p>
+                    
+                    <p>
+                        I just wanted to take this moment to greet you on your special day. 
+                    </p>
+
+                    <p>
+                        Palagi mong tandaan na sobrang thankful ako sa'yo. Every time may pinagdadaanan ako o may problema ako, speciially nung namatay si ina, your there to listen, iyak na iyak pa ko non (OA!).  Thank you for always being my safe space and trusted confidante. If you need help, kahit hindi ako makakatulong, andito lang ako (drama?! Sabihin laging may side comment). Well, ako na to ei.
+                    </p>
+
+                    <p>
+                        Alam ko sobrang busy mo ngayon sa school at busy rin ako sa work, kaya medyo bihira tayong makapag-chat, well, di mona din kase ako pinapansin kaya bahala ka na, okay?! (AYYY, OA lang! Char Char lang tayo, okiiieee?) . Pero gusto ko lang ipaalala sa'yo na hindi magbabago yung love and importance (IMPORTANCE?!) mo sakin.
+                    </p>
+
+                    <p>
+                        Gusto ko sanang pumunta dyan to celebrate kasama ka pero baka busy ka sa school works mo at wala kang time, kidding aside! 😅 But jokes apart, I sent a little gift your way just to remind you how much you are loved and appreciated, hindii ko na din kase alam yung mga gusto mo (baka ma mali pa ko).
+                    </p>
+
+                    <p class="pt-2 font-medium text-gray-800">
+                        I wish you all the happiness, good health, and success sa lahat ng goals mo sa school at sa buhay. Palagi mong galingan! I Love You! Happy Birthday uli! 🎂✨
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. REASONS & MEMORIES TIMELINE -->
+        <section class="space-y-6">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-800">Why You're Still So Special To Me</h2>
+                <p class="text-xs sm:text-sm text-gray-500">A few things that will never change</p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4">
+                <div class="glass-card glass-card-hover rounded-2xl p-6 border border-roseGoldLight space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-pink-100 text-roseGold flex items-center justify-center text-lg">
+                        <i class="fas fa-hands-holding-heart"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-gray-800 text-base">Always Listening</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Kahit kailan, hindi ka nagkulang sa pakikinig sa akin kapag may mabigat akong dinadala (though minsan medyo bingi ka).
+                    </p>
+                </div>
+
+                <div class="glass-card glass-card-hover rounded-2xl p-6 border border-roseGoldLight space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amberGold flex items-center justify-center text-lg">
+                        <i class="fas fa-smile-beam"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-gray-800 text-base">4 Years of Good Times</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Yung tawanan, kulitan, at suporta natin sa isa't isa ay memories na hinding-hindi makakalimutan (para ka kaseng alien tumawa).
+                    </p>
+                </div>
+
+                <div class="glass-card glass-card-hover rounded-2xl p-6 border border-roseGoldLight space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-rose-100 text-dustyRose flex items-center justify-center text-lg">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-gray-800 text-base">Unbreakable</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        Kahit busy ka sa school.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. INTERACTIVE VIRTUAL GIFT BOX -->
+        <section class="text-center pt-6">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-roseGoldLight space-y-6 relative overflow-hidden">
+                <div class="space-y-2">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-roseGold">Special Surprise</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-800">A Little Reminder For You</h2>
+                </div>
+
+                <div class="py-4">
+                    <button id="giftButton" onclick="openGiftModal()" class="group relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-roseGold to-dustyRose text-white font-bold text-sm sm:text-base shadow-xl shadow-roseGold/25 hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-gift mr-3 text-lg group-hover:bounce"></i>
+                        <span>Click To Open Birthday Gift Note!</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center text-xs text-gray-400 pt-8 pb-4">
+            <p>Made with ❤️ for your Birthday • Wishing you all the best always!</p>
+        </footer>
+
+    </div>
+
+    <!-- LIGHTBOX MODAL FOR PHOTOS -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 transition-opacity duration-300" onclick="closeLightbox()">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-2xl hover:text-roseGold transition-colors">
+            <i class="fas fa-times"></i>
+        </button>
+        <img id="lightboxImg" src="" alt="Enlarged photo" class="max-w-full max-h-[85vh] rounded-xl shadow-2xl object-contain" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- GIFT SURPRISE MODAL -->
+    <div id="giftModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4" onclick="closeGiftModal()">
+        <div class="glass-card bg-white/95 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 text-center transform transition-all border border-roseGoldLight shadow-2xl" onclick="event.stopPropagation()">
+            <div class="w-16 h-16 rounded-full bg-roseGoldLight text-roseGold flex items-center justify-center mx-auto text-3xl">
+                <i class="fas fa-gift"></i>
+            </div>
+            
+            <div class="space-y-2">
+                <h3 class="text-xl font-serif font-bold text-gray-800">A Little Gift Is On Its Way! 🎁</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    I sent a simple present to your way today to show my appreciation and love for you on your birthday!
+                </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-roseGoldLight/40 border border-roseGoldLight text-xs text-gray-700 italic">
+                "Kahit super busy ka sa school at ako sa work, hope this brings a big smile to your face today!"
+            </div>
+
+            <button onclick="closeGiftModal()" class="w-full py-3 rounded-full bg-roseGold text-white font-semibold text-sm shadow-md hover:bg-dustyRose transition-colors">
+                Close & Enjoy Your Day! ✨
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Audio Synthesizer (Happy Birthday Tune using Web Audio API to avoid external asset dependency)
+        let audioCtx = null;
+        let isPlaying = false;
+        let timeoutIds = [];
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        const notes = [
+            { note: 264, duration: 0.3 }, { note: 264, duration: 0.3 }, { note: 297, duration: 0.6 },
+            { note: 264, duration: 0.6 }, { note: 352, duration: 0.6 }, { note: 330, duration: 1.0 },
+            { note: 264, duration: 0.3 }, { note: 264, duration: 0.3 }, { note: 297, duration: 0.6 },
+            { note: 264, duration: 0.6 }, { note: 396, duration: 0.6 }, { note: 352, duration: 1.0 }
+        ];
+
+        function playNote(freq, duration, time) {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'triangle';
+            osc.frequency.value = freq;
+            
+            gain.gain.setValueAtTime(0.15, time);
+            gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
+            
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            
+            osc.start(time);
+            osc.stop(time + duration);
+        }
+
+        function playMelody() {
+            if (!isPlaying) return;
+            let now = audioCtx.currentTime;
+            let delay = 0;
+
+            notes.forEach(item => {
+                let tid = setTimeout(() => {
+                    if (isPlaying) playNote(item.note, item.duration, audioCtx.currentTime);
+                }, delay * 1000);
+                timeoutIds.push(tid);
+                delay += item.duration + 0.1;
+            });
+
+            // Loop melody
+            let loopTid = setTimeout(() => {
+                if (isPlaying) playMelody();
+            }, delay * 1000);
+            timeoutIds.push(loopTid);
+        }
+
+        function toggleAudio() {
+            initAudio();
+            const musicText = document.getElementById('musicText');
+            const musicPing = document.getElementById('musicPing');
+            const musicDot = document.getElementById('musicDot');
+
+            if (!isPlaying) {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                isPlaying = true;
+                musicText.innerText = 'Playing';
+                musicPing.classList.remove('hidden');
+                musicDot.classList.replace('bg-gray-400', 'bg-roseGold');
+                playMelody();
+            } else {
+                isPlaying = false;
+                timeoutIds.forEach(id => clearTimeout(id));
+                timeoutIds = [];
+                musicText.innerText = 'Play Music';
+                musicPing.classList.add('hidden');
+                musicDot.classList.replace('bg-roseGold', 'bg-gray-400');
+            }
+        }
+
+        // Toggle Letter Collapse
+        function toggleLetter() {
+            const letterBody = document.getElementById('letterBody');
+            if (letterBody.classList.contains('hidden')) {
+                letterBody.classList.remove('hidden');
+            } else {
+                letterBody.classList.add('hidden');
+            }
+        }
+
+        // Lightbox Functions
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = src;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // Gift Modal Functions
+        function openGiftModal() {
+            document.getElementById('giftModal').classList.remove('hidden');
+            triggerConfetti();
+        }
+
+        function closeGiftModal() {
+            document.getElementById('giftModal').classList.add('hidden');
+        }
+
+        // Floating Hearts and Sparkles Generator
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            const symbols = ['♥', '✨', '🌸', '✨'];
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'heart-particle text-roseGoldLight';
+                particle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.fontSize = (Math.random() * 16 + 12) + 'px';
+                particle.style.animationDuration = (Math.random() * 6 + 6) + 's';
+                particle.style.animationDelay = (Math.random() * 5) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Confetti burst on gift open
+        function triggerConfetti() {
+            const container = document.getElementById('particles-container');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'heart-particle text-amberGold';
+                particle.innerText = '✨';
+                particle.style.left = (Math.random() * 80 + 10) + 'vw';
+                particle.style.fontSize = '20px';
+                particle.style.animationDuration = '3s';
+                container.appendChild(particle);
+                setTimeout(() => particle.remove(), 3000);
+            }
+        }
+
+        window.onload = function() {
+            createParticles();
+        };
+    </script>
+</body>
+</html>
