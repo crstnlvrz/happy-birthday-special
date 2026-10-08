@@ -132,9 +132,14 @@
 </head>
 <body class="bg-grid-pattern relative min-h-screen font-sans selection:bg-roseGoldLight selection:text-roseGold">
 
+    <!-- Hidden Audio Element for Background Music -->
+    <audio id="bgMusic" loop style="display: none;">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2715/2715-preview.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- Audio Player Controller -->
     <div class="fixed top-4 right-4 z-50">
-        <button id="musicToggle" onclick="toggleAudio()" class="glass-card px-3 py-2.5 sm:px-4 rounded-full flex items-center space-x-2 text-xs font-semibold text-roseGold border border-roseGoldLight group hover:shadow-md transition-all active:scale-95">
+        <button id="musicToggle" onclick="toggleAudio()" class="glass-card px-3 py-2.5 sm:px-4 rounded-full flex items-center space-x-2 text-xs font-semibold text-roseGold border border-roseGoldLight hover:bg-white/20 transition-all duration-300 group">
             <span class="relative flex h-3 w-3">
               <span id="musicPing" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-roseGold opacity-75 hidden"></span>
               <span id="musicDot" class="relative inline-flex rounded-full h-3 w-3 bg-gray-400"></span>
@@ -266,7 +271,7 @@
                 <p class="text-xs sm:text-sm text-gray-500">Tap to open your birthday letter</p>
             </div>
 
-            <div id="letterCard" onclick="toggleLetter()" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-10 cursor-pointer border border-roseGoldLight shadow-lg hover:shadow-xl transition-all relative active:scale-95">
+            <div id="letterCard" onclick="toggleLetter()" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-10 cursor-pointer border border-roseGoldLight shadow-lg hover:shadow-xl transition-all duration-300 relative active:scale-95">
                 <!-- Decorative Top Ribbon -->
                 <div class="absolute top-0 right-0 w-16 sm:w-24 h-16 sm:h-24 bg-gradient-to-bl from-roseGoldLight to-transparent rounded-bl-full pointer-events-none"></div>
 
@@ -294,15 +299,15 @@
                     </p>
 
                     <p>
-                        Palagi mong tandaan na sobrang thankful ako sa'yo. Every time may pinagdadaanan ako o may problema ako, especially nung namatay si ina, you're there to listen, iyak na iyak pa ko but you never judge me. You always listen with your heart.
+                        Palagi mong tandaan na sobrang thankful ako sa'yo. Every time may pinagdadaanan ako o may problema ako, especially nung namatay si ina, you're there to listen, iyak na iyak kasama mo, at sumusuporta sa akin no matter what.
                     </p>
 
                     <p>
-                        Alam ko sobrang busy mo ngayon sa school at busy rin ako sa work, kaya medyo bihira tayong makapag-chat, well, di mo naman din kase ako pinapansin kaya bahala ka na, okay?! (AYYYY, sorry! Charot lang!)
+                        Alam ko sobrang busy mo ngayon sa school at busy rin ako sa work, kaya medyo bihira tayong makapag-chat, well, di mo naman din kase ako pinapansin kaya bahala ka na, okay?! (Haha, joke lang! 😂)
                     </p>
 
                     <p>
-                        Gusto ko sanang pumunta dyan to celebrate kasama ka pero baka busy ka sa school works mo at wala kang time, kidding aside! 😂 But jokes apart, I sent a little gift your way to celebrate this day with you even though we're far apart.
+                        Gusto ko sanang pumunta dyan to celebrate kasama ka pero baka busy ka sa school works mo at wala kang time, kidding aside! 😂 But jokes apart, I sent a little gift your way to show how much I truly appreciate and love you.
                     </p>
 
                     <p class="pt-2 font-medium text-gray-800">
@@ -361,7 +366,7 @@
                 </div>
 
                 <div class="py-2 sm:py-4">
-                    <button id="giftButton" onclick="openGiftModal()" class="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-roseGold to-dustyRose text-white font-semibold text-sm sm:text-base shadow-lg shadow-roseGold/30 hover:shadow-xl hover:scale-105 transition-all duration-300 active:scale-95">
+                    <button id="giftButton" onclick="openGiftModal()" class="group relative inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-roseGold to-dustyRose text-white font-semibold text-sm sm:text-base shadow-lg shadow-roseGold/30 hover:shadow-xl hover:shadow-roseGold/40 transition-all duration-300 active:scale-95">
                         <i class="fas fa-gift mr-2 sm:mr-3 text-base sm:text-lg group-hover:bounce"></i>
                         <span>Open Birthday Gift!</span>
                     </button>
@@ -409,79 +414,25 @@
     </div>
 
     <script>
-        // Audio Synthesizer (Happy Birthday Tune using Web Audio API)
-        let audioCtx = null;
+        // Background Music Player with Volume Control
+        let bgMusic = document.getElementById('bgMusic');
         let isPlaying = false;
-        let timeoutIds = [];
-
-        function initAudio() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-        }
-
-        const notes = [
-            { note: 264, duration: 0.3 }, { note: 264, duration: 0.3 }, { note: 297, duration: 0.6 },
-            { note: 264, duration: 0.6 }, { note: 352, duration: 0.6 }, { note: 330, duration: 1.0 },
-            { note: 264, duration: 0.3 }, { note: 264, duration: 0.3 }, { note: 297, duration: 0.6 },
-            { note: 264, duration: 0.6 }, { note: 396, duration: 0.6 }, { note: 352, duration: 1.0 }
-        ];
-
-        function playNote(freq, duration, time) {
-            if (!audioCtx) return;
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            
-            osc.type = 'triangle';
-            osc.frequency.value = freq;
-            
-            gain.gain.setValueAtTime(0.15, time);
-            gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
-            
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            
-            osc.start(time);
-            osc.stop(time + duration);
-        }
-
-        function playMelody() {
-            if (!isPlaying) return;
-            let delay = 0;
-
-            notes.forEach(item => {
-                let tid = setTimeout(() => {
-                    if (isPlaying) playNote(item.note, item.duration, audioCtx.currentTime);
-                }, delay * 1000);
-                timeoutIds.push(tid);
-                delay += item.duration + 0.1;
-            });
-
-            let loopTid = setTimeout(() => {
-                if (isPlaying) playMelody();
-            }, delay * 1000);
-            timeoutIds.push(loopTid);
-        }
 
         function toggleAudio() {
-            initAudio();
             const musicText = document.getElementById('musicText');
             const musicPing = document.getElementById('musicPing');
             const musicDot = document.getElementById('musicDot');
 
             if (!isPlaying) {
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
+                bgMusic.volume = 0.3; // Set volume to 30% for soft background music
+                bgMusic.play().catch(err => console.log('Audio play error:', err));
                 isPlaying = true;
                 musicText.innerText = 'Playing';
                 musicPing.classList.remove('hidden');
                 musicDot.classList.replace('bg-gray-400', 'bg-roseGold');
-                playMelody();
             } else {
+                bgMusic.pause();
                 isPlaying = false;
-                timeoutIds.forEach(id => clearTimeout(id));
-                timeoutIds = [];
                 musicText.innerText = 'Play Music';
                 musicPing.classList.add('hidden');
                 musicDot.classList.replace('bg-roseGold', 'bg-gray-400');
