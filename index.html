@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 26.8.0.3 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { font-size: 10pt; font-family: "Liberation Mono", monospace; background: transparent }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Happy Birthday to My Dearest Friend!&lt;/title&gt;
+    &lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt;
+    &lt;link href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,400&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    
+    &lt;script&gt;
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        roseGold: '#B76E79',
+                        roseGoldLight: '#F7E7E8',
+                        warmCream: '#FFFDF9',
+                        softPink: '#FCE7F0',
+                        amberGold: '#D4AF37',
+                        dustyRose: '#C08081'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        cursive: ['Dancing Script', 'cursive'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    &lt;/script&gt;
+
+    &lt;style&gt;
+        body {
+            background-color: #FFFDF9;
+            color: #4A3E3D;
+            overflow-x: hidden;
+        }
+
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(183, 110, 121, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(247, 231, 232, 0.8);
+            box-shadow: 0 10px 30px -5px rgba(183, 110, 121, 0.08);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(183, 110, 121, 0.18);
+        }
+
+        /* Floating Hearts Particles */
+        .heart-particle {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 8s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        /* Envelope Styles */
+        .envelope-wrapper {
+            perspective: 1000px;
+        }
+
+        .envelope {
+            position: relative;
+            background: #fdf6f0;
+            border: 2px solid #E8C5C8;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: #f7e7e8;
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            transform-origin: top;
+            transition: transform 0.5s ease;
+            z-index: 5;
+            border-bottom: 2px solid #e0b0b4;
+        }
+
+        /* Shimmer Effect */
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFDF9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E8C5C8;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B76E79;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;bg-grid-pattern relative min-h-screen font-sans selection:bg-roseGoldLight selection:text-roseGold&quot;&gt;
+
+    &lt;!-- Audio Player Controller --&gt;
+    &lt;div class=&quot;fixed top-4 right-4 z-50&quot;&gt;
+        &lt;button id=&quot;musicToggle&quot; onclick=&quot;toggleAudio()&quot; class=&quot;glass-card px-4 py-2.5 rounded-full flex items-center space-x-2 text-xs font-semibold text-roseGold border border-roseGoldLight shadow-md hover:bg-white transition-all group&quot;&gt;
+            &lt;span class=&quot;relative flex h-3 w-3&quot;&gt;
+              &lt;span id=&quot;musicPing&quot; class=&quot;animate-ping absolute inline-flex h-full w-full rounded-full bg-roseGold opacity-75 hidden&quot;&gt;&lt;/span&gt;
+              &lt;span id=&quot;musicDot&quot; class=&quot;relative inline-flex rounded-full h-3 w-3 bg-gray-400&quot;&gt;&lt;/span&gt;
+            &lt;/span&gt;
+            &lt;i id=&quot;musicIcon&quot; class=&quot;fas fa-music text-roseGold group-hover:rotate-12 transition-transform&quot;&gt;&lt;/i&gt;
+            &lt;span id=&quot;musicText&quot;&gt;Play Music&lt;/span&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Floating Background Particles Container --&gt;
+    &lt;div id=&quot;particles-container&quot; class=&quot;fixed inset-0 pointer-events-none z-0 overflow-hidden&quot;&gt;&lt;/div&gt;
+
+    &lt;!-- MAIN CONTAINER --&gt;
+    &lt;div class=&quot;relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-16&quot;&gt;
+
+        &lt;!-- 1. HERO HEADER SECTION --&gt;
+        &lt;header class=&quot;text-center space-y-6 pt-6&quot;&gt;
+            &lt;div class=&quot;inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-card text-roseGold text-xs sm:text-sm font-medium tracking-wide border border-roseGoldLight shadow-sm&quot;&gt;
+                &lt;i class=&quot;fas fa-sparkles text-amberGold&quot;&gt;&lt;/i&gt;
+                &lt;span&gt;Celebrating Someone Really Special&lt;/span&gt;
+                &lt;i class=&quot;fas fa-sparkles text-amberGold&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            
+            &lt;h1 class=&quot;text-4xl sm:text-6xl md:text-7xl font-cursive font-bold text-gray-800 tracking-wide leading-tight&quot;&gt;
+                Happy Birthday, &lt;span class=&quot;bg-gradient-to-r from-roseGold via-dustyRose to-amberGold bg-clip-text text-transparent&quot;&gt;My Dear Friend!&lt;/span&gt; â¨
+            &lt;/h1&gt;
+
+            &lt;p class=&quot;max-w-xl mx-auto text-sm sm:text-base text-gray-600 leading-relaxed font-normal&quot;&gt;
+                Years of beautiful memories, endless chats, and a lifelong bond. Enjoy and I Love You Always!â¤ï¸
+            &lt;/p&gt;
+
+            &lt;div class=&quot;pt-2 flex justify-center space-x-3&quot;&gt;
+                &lt;a href=&quot;#letter&quot; class=&quot;px-6 py-3 rounded-full bg-roseGold text-white text-sm font-semibold shadow-lg shadow-roseGold/20 hover:bg-dustyRose transition-all duration-300 transform hover:-translate-y-0.5&quot;&gt;
+                    Read My Message &lt;i class=&quot;fas fa-envelope-open-text ml-2&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+                &lt;a href=&quot;#gallery&quot; class=&quot;px-6 py-3 rounded-full glass-card text-gray-700 text-sm font-semibold border border-roseGoldLight hover:bg-white transition-all duration-300&quot;&gt;
+                    See Memories &lt;i class=&quot;fas fa-images ml-2 text-roseGold&quot;&gt;&lt;/i&gt;
+                &lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+
+        &lt;!-- 2. PHOTO GALLERY SECTION --&gt;
+        &lt;section id=&quot;gallery&quot; class=&quot;space-y-6&quot;&gt;
+            &lt;div class=&quot;text-center space-y-2&quot;&gt;
+                &lt;h2 class=&quot;text-2xl sm:text-3xl font-serif font-bold text-gray-800&quot;&gt;Our Photo Vault&lt;/h2&gt;
+                &lt;p class=&quot;text-xs sm:text-sm text-gray-500&quot;&gt;Click any photo to view in full resolution&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Gallery Grid --&gt;
+            &lt;div class=&quot;grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4&quot;&gt;
+                &lt;!-- Photo Items --&gt;
+                &lt;div onclick=&quot;openLightbox('DSC_0183.JPG')&quot; class=&quot;group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl&quot;&gt;
+                    &lt;img src=&quot;DSC_0183.JPG&quot; alt=&quot;Memory photo&quot; class=&quot;w-full h-full object-cover group-hover:scale-110 transition-transform duration-500&quot; loading=&quot;lazy&quot; onerror=&quot;this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'&quot;&gt;
+                    &lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3&quot;&gt;
+                        &lt;span class=&quot;text-white text-xs font-medium&quot;&gt;&lt;i class=&quot;fas fa-search-plus mr-1&quot;&gt;&lt;/i&gt; View Photo&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div onclick=&quot;openLightbox('DSC_0264.JPG')&quot; class=&quot;group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl&quot;&gt;
+                    &lt;img src=&quot;DSC_0264.JPG&quot; alt=&quot;Memory photo&quot; class=&quot;w-full h-full object-cover group-hover:scale-110 transition-transform duration-500&quot; loading=&quot;lazy&quot; onerror=&quot;this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'&quot;&gt;
+                    &lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3&quot;&gt;
+                        &lt;span class=&quot;text-white text-xs font-medium&quot;&gt;&lt;i class=&quot;fas fa-search-plus mr-1&quot;&gt;&lt;/i&gt; View Photo&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div onclick=&quot;openLightbox('DSC_0265.JPG')&quot; class=&quot;group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl&quot;&gt;
+                    &lt;img src=&quot;DSC_0265.JPG&quot; alt=&quot;Memory photo&quot; class=&quot;w-full h-full object-cover group-hover:scale-110 transition-transform duration-500&quot; loading=&quot;lazy&quot; onerror=&quot;this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'&quot;&gt;
+                    &lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3&quot;&gt;
+                        &lt;span class=&quot;text-white text-xs font-medium&quot;&gt;&lt;i class=&quot;fas fa-search-plus mr-1&quot;&gt;&lt;/i&gt; View Photo&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div onclick=&quot;openLightbox('IMG_0037.JPG')&quot; class=&quot;group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl&quot;&gt;
+                    &lt;img src=&quot;IMG_0037.JPG&quot; alt=&quot;Memory photo&quot; class=&quot;w-full h-full object-cover group-hover:scale-110 transition-transform duration-500&quot; loading=&quot;lazy&quot; onerror=&quot;this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'&quot;&gt;
+                    &lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3&quot;&gt;
+                        &lt;span class=&quot;text-white text-xs font-medium&quot;&gt;&lt;i class=&quot;fas fa-search-plus mr-1&quot;&gt;&lt;/i&gt; View Photo&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div onclick=&quot;openLightbox('IMG_0036.JPG')&quot; class=&quot;group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl&quot;&gt;
+                    &lt;img src=&quot;IMG_0036.JPG&quot; alt=&quot;Memory photo&quot; class=&quot;w-full h-full object-cover group-hover:scale-110 transition-transform duration-500&quot; loading=&quot;lazy&quot; onerror=&quot;this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'&quot;&gt;
+                    &lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3&quot;&gt;
+                        &lt;span class=&quot;text-white text-xs font-medium&quot;&gt;&lt;i class=&quot;fas fa-search-plus mr-1&quot;&gt;&lt;/i&gt; View Photo&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div onclick=&quot;openLightbox('IIMG_0038.JPG')&quot; class=&quot;group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl&quot;&gt;
+                    &lt;img src=&quot;IMG_0038.JPG&quot; alt=&quot;Memory photo&quot; class=&quot;w-full h-full object-cover group-hover:scale-110 transition-transform duration-500&quot; loading=&quot;lazy&quot; onerror=&quot;this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'&quot;&gt;
+                    &lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3&quot;&gt;
+                        &lt;span class=&quot;text-white text-xs font-medium&quot;&gt;&lt;i class=&quot;fas fa-search-plus mr-1&quot;&gt;&lt;/i&gt; View Photo&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div onclick=&quot;openLightbox('IMG_0087.JPG')&quot; class=&quot;group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl&quot;&gt;
+                    &lt;img src=&quot;IMG_0087.JPG&quot; alt=&quot;Memory photo&quot; class=&quot;w-full h-full object-cover group-hover:scale-110 transition-transform duration-500&quot; loading=&quot;lazy&quot; onerror=&quot;this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'&quot;&gt;
+                    &lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3&quot;&gt;
+                        &lt;span class=&quot;text-white text-xs font-medium&quot;&gt;&lt;i class=&quot;fas fa-search-plus mr-1&quot;&gt;&lt;/i&gt; View Photo&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div onclick=&quot;openLightbox('IMG_0101.JPG')&quot; class=&quot;group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl&quot;&gt;
+                    &lt;img src=&quot;IMG_0101.JPG&quot; alt=&quot;Memory photo&quot; class=&quot;w-full h-full object-cover group-hover:scale-110 transition-transform duration-500&quot; loading=&quot;lazy&quot; onerror=&quot;this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'&quot;&gt;
+                    &lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3&quot;&gt;
+                        &lt;span class=&quot;text-white text-xs font-medium&quot;&gt;&lt;i class=&quot;fas fa-search-plus mr-1&quot;&gt;&lt;/i&gt; View Photo&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div onclick=&quot;openLightbox('IMG_0107.JPG')&quot; class=&quot;group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl&quot;&gt;
+                    &lt;img src=&quot;IMG_0107.JG&quot; alt=&quot;Memory photo&quot; class=&quot;w-full h-full object-cover group-hover:scale-110 transition-transform duration-500&quot; loading=&quot;lazy&quot; onerror=&quot;this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'&quot;&gt;
+                    &lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3&quot;&gt;
+                        &lt;span class=&quot;text-white text-xs font-medium&quot;&gt;&lt;i class=&quot;fas fa-search-plus mr-1&quot;&gt;&lt;/i&gt; View Photo&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div onclick=&quot;openLightbox('DSC_0183.JPG')&quot; class=&quot;group relative aspect-square rounded-2xl overflow-hidden glass-card cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-1 sm:col-span-1&quot;&gt;
+                    &lt;img src=&quot;DSC_0183.JPG&quot; alt=&quot;Memory photo&quot; class=&quot;w-full h-full object-cover group-hover:scale-110 transition-transform duration-500&quot; loading=&quot;lazy&quot; onerror=&quot;this.src='https://placehold.co/600x600/f7e7e8/b76e79?text=Our+Memory'&quot;&gt;
+                    &lt;div class=&quot;absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3&quot;&gt;
+                        &lt;span class=&quot;text-white text-xs font-medium&quot;&gt;&lt;i class=&quot;fas fa-search-plus mr-1&quot;&gt;&lt;/i&gt; View Photo&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- 3. HEARTFELT TAGLISH LETTER CARD --&gt;
+        &lt;section id=&quot;letter&quot; class=&quot;space-y-6 pt-4&quot;&gt;
+            &lt;div class=&quot;text-center space-y-2&quot;&gt;
+                &lt;h2 class=&quot;text-2xl sm:text-3xl font-serif font-bold text-gray-800&quot;&gt;A Heartfelt Message For You&lt;/h2&gt;
+                &lt;p class=&quot;text-xs sm:text-sm text-gray-500&quot;&gt;Tap the card below to open your birthday letter&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&quot;letterCard&quot; onclick=&quot;toggleLetter()&quot; class=&quot;glass-card rounded-3xl p-6 sm:p-10 cursor-pointer border border-roseGoldLight shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group&quot;&gt;
+                &lt;!-- Decorative Top Ribbon --&gt;
+                &lt;div class=&quot;absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-roseGoldLight to-transparent rounded-bl-full pointer-events-none&quot;&gt;&lt;/div&gt;
+
+                &lt;div class=&quot;flex items-center justify-between pb-6 border-b border-roseGoldLight/60&quot;&gt;
+                    &lt;div class=&quot;flex items-center space-x-3&quot;&gt;
+                        &lt;div class=&quot;w-10 h-10 rounded-full bg-roseGoldLight text-roseGold flex items-center justify-center font-bold&quot;&gt;
+                            &lt;i class=&quot;fas fa-heart&quot;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;h3 class=&quot;font-serif font-bold text-gray-800 text-base sm:text-lg&quot;&gt; Para Saâyo&lt;/h3&gt;
+                            &lt;p class=&quot;text-xs text-roseGold font-medium&quot;&gt;Click to expand/collapse message&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;span class=&quot;text-xs px-3 py-1 rounded-full bg-roseGoldLight text-roseGold font-semibold group-hover:bg-roseGold group-hover:text-white transition-colors&quot;&gt;
+                        Read &lt;i class=&quot;fas fa-chevron-down ml-1 text-xs&quot;&gt;&lt;/i&gt;
+                    &lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Letter Content --&gt;
+                &lt;div id=&quot;letterBody&quot; class=&quot;space-y-4 pt-6 text-sm sm:text-base text-gray-700 leading-relaxed font-sans transition-all duration-500&quot;&gt;
+                    &lt;p class=&quot;font-semibold text-roseGold font-serif text-lg&quot;&gt;Happy Birthday, Rochelle!&lt;/p&gt;
+                    
+                    &lt;p&gt;
+                        I just wanted to take this moment to greet you on your special day. 
+                    &lt;/p&gt;
+
+                    &lt;p&gt;
+                        Palagi mong tandaan na sobrang thankful ako sa'yo. Every time may pinagdadaanan ako o may problema ako, speciially nung namatay si ina, your there to listen, iyak na iyak pa ko non (OA!).  Thank you for always being my safe space and trusted confidante. If you need help, kahit hindi ako makakatulong, andito lang ako (drama?! Sabihin laging may side comment). Well, ako na to ei.
+                    &lt;/p&gt;
+
+                    &lt;p&gt;
+                        Alam ko sobrang busy mo ngayon sa school at busy rin ako sa work, kaya medyo bihira tayong makapag-chat, well, di mona din kase ako pinapansin kaya bahala ka na, okay?! (AYYY, OA lang! Char Char lang tayo, okiiieee?) . Pero gusto ko lang ipaalala sa'yo na hindi magbabago yung love and importance (IMPORTANCE?!) mo sakin.
+                    &lt;/p&gt;
+
+                    &lt;p&gt;
+                        Gusto ko sanang pumunta dyan to celebrate kasama ka pero baka busy ka sa school works mo at wala kang time, kidding aside! ð But jokes apart, I sent a little gift your way just to remind you how much you are loved and appreciated, hindii ko na din kase alam yung mga gusto mo (baka ma mali pa ko).
+                    &lt;/p&gt;
+
+                    &lt;p class=&quot;pt-2 font-medium text-gray-800&quot;&gt;
+                        I wish you all the happiness, good health, and success sa lahat ng goals mo sa school at sa buhay. Palagi mong galingan! I Love You! Happy Birthday uli! ðâ¨
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- 4. REASONS &amp; MEMORIES TIMELINE --&gt;
+        &lt;section class=&quot;space-y-6&quot;&gt;
+            &lt;div class=&quot;text-center space-y-2&quot;&gt;
+                &lt;h2 class=&quot;text-2xl sm:text-3xl font-serif font-bold text-gray-800&quot;&gt;Why You're Still So Special To Me&lt;/h2&gt;
+                &lt;p class=&quot;text-xs sm:text-sm text-gray-500&quot;&gt;A few things that will never change&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;grid sm:grid-cols-3 gap-4&quot;&gt;
+                &lt;div class=&quot;glass-card glass-card-hover rounded-2xl p-6 border border-roseGoldLight space-y-3&quot;&gt;
+                    &lt;div class=&quot;w-10 h-10 rounded-xl bg-pink-100 text-roseGold flex items-center justify-center text-lg&quot;&gt;
+                        &lt;i class=&quot;fas fa-hands-holding-heart&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h3 class=&quot;font-serif font-bold text-gray-800 text-base&quot;&gt;Always Listening&lt;/h3&gt;
+                    &lt;p class=&quot;text-xs text-gray-600 leading-relaxed&quot;&gt;
+                        Kahit kailan, hindi ka nagkulang sa pakikinig sa akin kapag may mabigat akong dinadala (though minsan medyo bingi ka).
+                    &lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;glass-card glass-card-hover rounded-2xl p-6 border border-roseGoldLight space-y-3&quot;&gt;
+                    &lt;div class=&quot;w-10 h-10 rounded-xl bg-amber-100 text-amberGold flex items-center justify-center text-lg&quot;&gt;
+                        &lt;i class=&quot;fas fa-smile-beam&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h3 class=&quot;font-serif font-bold text-gray-800 text-base&quot;&gt;4 Years of Good Times&lt;/h3&gt;
+                    &lt;p class=&quot;text-xs text-gray-600 leading-relaxed&quot;&gt;
+                        Yung tawanan, kulitan, at suporta natin sa isa't isa ay memories na hinding-hindi makakalimutan (para ka kaseng alien tumawa).
+                    &lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;glass-card glass-card-hover rounded-2xl p-6 border border-roseGoldLight space-y-3&quot;&gt;
+                    &lt;div class=&quot;w-10 h-10 rounded-xl bg-rose-100 text-dustyRose flex items-center justify-center text-lg&quot;&gt;
+                        &lt;i class=&quot;fas fa-infinity&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h3 class=&quot;font-serif font-bold text-gray-800 text-base&quot;&gt;Unbreakable&lt;/h3&gt;
+                    &lt;p class=&quot;text-xs text-gray-600 leading-relaxed&quot;&gt;
+                        Kahit busy ka sa school.
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- 5. INTERACTIVE VIRTUAL GIFT BOX --&gt;
+        &lt;section class=&quot;text-center pt-6&quot;&gt;
+            &lt;div class=&quot;glass-card rounded-3xl p-8 sm:p-12 border border-roseGoldLight space-y-6 relative overflow-hidden&quot;&gt;
+                &lt;div class=&quot;space-y-2&quot;&gt;
+                    &lt;span class=&quot;text-xs font-semibold uppercase tracking-widest text-roseGold&quot;&gt;Special Surprise&lt;/span&gt;
+                    &lt;h2 class=&quot;text-2xl sm:text-3xl font-serif font-bold text-gray-800&quot;&gt;A Little Reminder For You&lt;/h2&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;py-4&quot;&gt;
+                    &lt;button id=&quot;giftButton&quot; onclick=&quot;openGiftModal()&quot; class=&quot;group relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-roseGold to-dustyRose text-white font-bold text-sm sm:text-base shadow-xl shadow-roseGold/25 hover:shadow-2xl hover:scale-105 transition-all duration-300&quot;&gt;
+                        &lt;i class=&quot;fas fa-gift mr-3 text-lg group-hover:bounce&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;Click To Open Birthday Gift Note!&lt;/span&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- FOOTER --&gt;
+        &lt;footer class=&quot;text-center text-xs text-gray-400 pt-8 pb-4&quot;&gt;
+            &lt;p&gt;Made with â¤ï¸ for your Birthday â¢ Wishing you all the best always!&lt;/p&gt;
+        &lt;/footer&gt;
+
+    &lt;/div&gt;
+
+    &lt;!-- LIGHTBOX MODAL FOR PHOTOS --&gt;
+    &lt;div id=&quot;lightbox&quot; class=&quot;fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 transition-opacity duration-300&quot; onclick=&quot;closeLightbox()&quot;&gt;
+        &lt;button onclick=&quot;closeLightbox()&quot; class=&quot;absolute top-6 right-6 text-white text-2xl hover:text-roseGold transition-colors&quot;&gt;
+            &lt;i class=&quot;fas fa-times&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;img id=&quot;lightboxImg&quot; src=&quot;&quot; alt=&quot;Enlarged photo&quot; class=&quot;max-w-full max-h-[85vh] rounded-xl shadow-2xl object-contain&quot; onclick=&quot;event.stopPropagation()&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;!-- GIFT SURPRISE MODAL --&gt;
+    &lt;div id=&quot;giftModal&quot; class=&quot;fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4&quot; onclick=&quot;closeGiftModal()&quot;&gt;
+        &lt;div class=&quot;glass-card bg-white/95 rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 text-center transform transition-all border border-roseGoldLight shadow-2xl&quot; onclick=&quot;event.stopPropagation()&quot;&gt;
+            &lt;div class=&quot;w-16 h-16 rounded-full bg-roseGoldLight text-roseGold flex items-center justify-center mx-auto text-3xl&quot;&gt;
+                &lt;i class=&quot;fas fa-gift&quot;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&quot;space-y-2&quot;&gt;
+                &lt;h3 class=&quot;text-xl font-serif font-bold text-gray-800&quot;&gt;A Little Gift Is On Its Way! ð&lt;/h3&gt;
+                &lt;p class=&quot;text-sm text-gray-600 leading-relaxed&quot;&gt;
+                    I sent a simple present to your way today to show my appreciation and love for you on your birthday!
+                &lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;p-4 rounded-2xl bg-roseGoldLight/40 border border-roseGoldLight text-xs text-gray-700 italic&quot;&gt;
+                &quot;Kahit super busy ka sa school at ako sa work, hope this brings a big smile to your face today!&quot;
+            &lt;/div&gt;
+
+            &lt;button onclick=&quot;closeGiftModal()&quot; class=&quot;w-full py-3 rounded-full bg-roseGold text-white font-semibold text-sm shadow-md hover:bg-dustyRose transition-colors&quot;&gt;
+                Close &amp; Enjoy Your Day! â¨
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // Audio Synthesizer (Happy Birthday Tune using Web Audio API to avoid external asset dependency)
+        let audioCtx = null;
+        let isPlaying = false;
+        let timeoutIds = [];
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        const notes = [
+            { note: 264, duration: 0.3 }, { note: 264, duration: 0.3 }, { note: 297, duration: 0.6 },
+            { note: 264, duration: 0.6 }, { note: 352, duration: 0.6 }, { note: 330, duration: 1.0 },
+            { note: 264, duration: 0.3 }, { note: 264, duration: 0.3 }, { note: 297, duration: 0.6 },
+            { note: 264, duration: 0.6 }, { note: 396, duration: 0.6 }, { note: 352, duration: 1.0 }
+        ];
+
+        function playNote(freq, duration, time) {
+            if (!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'triangle';
+            osc.frequency.value = freq;
+            
+            gain.gain.setValueAtTime(0.15, time);
+            gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
+            
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            
+            osc.start(time);
+            osc.stop(time + duration);
+        }
+
+        function playMelody() {
+            if (!isPlaying) return;
+            let now = audioCtx.currentTime;
+            let delay = 0;
+
+            notes.forEach(item =&gt; {
+                let tid = setTimeout(() =&gt; {
+                    if (isPlaying) playNote(item.note, item.duration, audioCtx.currentTime);
+                }, delay * 1000);
+                timeoutIds.push(tid);
+                delay += item.duration + 0.1;
+            });
+
+            // Loop melody
+            let loopTid = setTimeout(() =&gt; {
+                if (isPlaying) playMelody();
+            }, delay * 1000);
+            timeoutIds.push(loopTid);
+        }
+
+        function toggleAudio() {
+            initAudio();
+            const musicText = document.getElementById('musicText');
+            const musicPing = document.getElementById('musicPing');
+            const musicDot = document.getElementById('musicDot');
+
+            if (!isPlaying) {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                isPlaying = true;
+                musicText.innerText = 'Playing';
+                musicPing.classList.remove('hidden');
+                musicDot.classList.replace('bg-gray-400', 'bg-roseGold');
+                playMelody();
+            } else {
+                isPlaying = false;
+                timeoutIds.forEach(id =&gt; clearTimeout(id));
+                timeoutIds = [];
+                musicText.innerText = 'Play Music';
+                musicPing.classList.add('hidden');
+                musicDot.classList.replace('bg-roseGold', 'bg-gray-400');
+            }
+        }
+
+        // Toggle Letter Collapse
+        function toggleLetter() {
+            const letterBody = document.getElementById('letterBody');
+            if (letterBody.classList.contains('hidden')) {
+                letterBody.classList.remove('hidden');
+            } else {
+                letterBody.classList.add('hidden');
+            }
+        }
+
+        // Lightbox Functions
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = src;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // Gift Modal Functions
+        function openGiftModal() {
+            document.getElementById('giftModal').classList.remove('hidden');
+            triggerConfetti();
+        }
+
+        function closeGiftModal() {
+            document.getElementById('giftModal').classList.add('hidden');
+        }
+
+        // Floating Hearts and Sparkles Generator
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            const symbols = ['â¥', 'â¨', 'ð¸', 'â¨'];
+            
+            for (let i = 0; i &lt; 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'heart-particle text-roseGoldLight';
+                particle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.fontSize = (Math.random() * 16 + 12) + 'px';
+                particle.style.animationDuration = (Math.random() * 6 + 6) + 's';
+                particle.style.animationDelay = (Math.random() * 5) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Confetti burst on gift open
+        function triggerConfetti() {
+            const container = document.getElementById('particles-container');
+            for (let i = 0; i &lt; 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'heart-particle text-amberGold';
+                particle.innerText = 'â¨';
+                particle.style.left = (Math.random() * 80 + 10) + 'vw';
+                particle.style.fontSize = '20px';
+                particle.style.animationDuration = '3s';
+                container.appendChild(particle);
+                setTimeout(() =&gt; particle.remove(), 3000);
+            }
+        }
+
+        window.onload = function() {
+            createParticles();
+        };
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
