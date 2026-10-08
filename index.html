@@ -139,6 +139,26 @@
             }
         }
 
+        /* Cursor Trail Heart */
+        .cursor-trail-heart {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+            z-index: 9999;
+            animation: trailFade 1.5s ease-out forwards;
+        }
+
+        @keyframes trailFade {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-40px) scale(0.5) rotate(45deg);
+            }
+        }
+
         /* Shimmer Effect */
         .shimmer {
             background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
@@ -166,15 +186,24 @@
             background: #B76E79;
         }
 
-        /* Gallery Photo Animations */
+        /* 3D Gallery Photo Card */
         .photo-card {
             position: relative;
             overflow: hidden;
             perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .photo-card:hover {
+            transform: rotateY(8deg) rotateX(-5deg) translateZ(20px);
         }
 
         .photo-card img {
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.6s ease-out;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .photo-card:hover img {
@@ -253,9 +282,78 @@
             animation-delay: 0.6s;
         }
 
-        /* Letter Card Animation */
-        .letter-card {
-            animation: flipIn 0.8s ease-out;
+        /* Envelope Animation */
+        .envelope-wrapper {
+            perspective: 1000px;
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #f5e6e0 0%, #ffe8e0 100%);
+            border: 3px solid #B76E79;
+            border-radius: 8px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 40px rgba(183, 110, 121, 0.2);
+        }
+
+        .envelope.opened {
+            transform: rotateX(180deg);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(135deg, #E8C5C8 0%, #F7E7E8 100%);
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            transform-origin: top;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-bottom: 2px solid #B76E79;
+        }
+
+        .envelope.opened .envelope-flap {
+            transform: rotateX(180deg);
+        }
+
+        .envelope-content {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #B76E79;
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .envelope-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #B76E79;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        /* Letter Content Animation */
+        .letter-reveal {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-delay: 0.3s;
         }
 
         /* Gift Section Animation */
@@ -294,6 +392,14 @@
             .text-4xl { font-size: 1.875rem; }
             .text-6xl { font-size: 2.25rem; }
             .text-7xl { font-size: 3rem; }
+            
+            .envelope {
+                aspect-ratio: 4/5;
+            }
+            
+            .envelope-label {
+                font-size: 14px;
+            }
         }
 
         /* Smooth Scroll Behavior */
@@ -378,7 +484,7 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-4">
                 <!-- Photo 1 -->
                 <div class="gallery-item photo-card group relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden glass-card cursor-pointer transform active:scale-95" onclick="openLightbox('DSC_0183.JPG')">
-                    <img src="DSC_0183.JPG" alt="Memory photo 1" class="w-full h-full object-cover" loading="lazy">
+                    <img src="DSC_0183.JPG" alt="Memory photo 1" loading="lazy">
                     <div class="photo-overlay-glow"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                         <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View</span>
@@ -387,7 +493,7 @@
 
                 <!-- Photo 2 -->
                 <div class="gallery-item photo-card group relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden glass-card cursor-pointer transform active:scale-95" onclick="openLightbox('DSC_0264.JPG')">
-                    <img src="DSC_0264.JPG" alt="Memory photo 2" class="w-full h-full object-cover" loading="lazy">
+                    <img src="DSC_0264.JPG" alt="Memory photo 2" loading="lazy">
                     <div class="photo-overlay-glow"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                         <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View</span>
@@ -396,7 +502,7 @@
 
                 <!-- Photo 3 -->
                 <div class="gallery-item photo-card group relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden glass-card cursor-pointer transform active:scale-95" onclick="openLightbox('DSC_0265.JPG')">
-                    <img src="DSC_0265.JPG" alt="Memory photo 3" class="w-full h-full object-cover" loading="lazy">
+                    <img src="DSC_0265.JPG" alt="Memory photo 3" loading="lazy">
                     <div class="photo-overlay-glow"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                         <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View</span>
@@ -405,7 +511,7 @@
 
                 <!-- Photo 4 -->
                 <div class="gallery-item photo-card group relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden glass-card cursor-pointer transform active:scale-95" onclick="openLightbox('IMG_0037.JPG')">
-                    <img src="IMG_0037.JPG" alt="Memory photo 4" class="w-full h-full object-cover" loading="lazy">
+                    <img src="IMG_0037.JPG" alt="Memory photo 4" loading="lazy">
                     <div class="photo-overlay-glow"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                         <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View</span>
@@ -414,7 +520,7 @@
 
                 <!-- Photo 5 -->
                 <div class="gallery-item photo-card group relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden glass-card cursor-pointer transform active:scale-95" onclick="openLightbox('IMG_0036.JPG')">
-                    <img src="IMG_0036.JPG" alt="Memory photo 5" class="w-full h-full object-cover" loading="lazy">
+                    <img src="IMG_0036.JPG" alt="Memory photo 5" loading="lazy">
                     <div class="photo-overlay-glow"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                         <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View</span>
@@ -423,7 +529,7 @@
 
                 <!-- Photo 6 -->
                 <div class="gallery-item photo-card group relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden glass-card cursor-pointer transform active:scale-95" onclick="openLightbox('IMG_0038.JPG')">
-                    <img src="IMG_0038.JPG" alt="Memory photo 6" class="w-full h-full object-cover" loading="lazy">
+                    <img src="IMG_0038.JPG" alt="Memory photo 6" loading="lazy">
                     <div class="photo-overlay-glow"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                         <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View</span>
@@ -432,7 +538,7 @@
 
                 <!-- Photo 7 -->
                 <div class="gallery-item photo-card group relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden glass-card cursor-pointer transform active:scale-95" onclick="openLightbox('IMG_0087.JPG')">
-                    <img src="IMG_0087.JPG" alt="Memory photo 7" class="w-full h-full object-cover" loading="lazy">
+                    <img src="IMG_0087.JPG" alt="Memory photo 7" loading="lazy">
                     <div class="photo-overlay-glow"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                         <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View</span>
@@ -441,7 +547,7 @@
 
                 <!-- Photo 8 -->
                 <div class="gallery-item photo-card group relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden glass-card cursor-pointer transform active:scale-95" onclick="openLightbox('IMG_0101.JPG')">
-                    <img src="IMG_0101.JPG" alt="Memory photo 8" class="w-full h-full object-cover" loading="lazy">
+                    <img src="IMG_0101.JPG" alt="Memory photo 8" loading="lazy">
                     <div class="photo-overlay-glow"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                         <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View</span>
@@ -450,7 +556,7 @@
 
                 <!-- Photo 9 -->
                 <div class="gallery-item photo-card group relative aspect-square rounded-lg sm:rounded-2xl overflow-hidden glass-card cursor-pointer transform active:scale-95" onclick="openLightbox('IMG_0107.JPG')">
-                    <img src="IMG_0107.JPG" alt="Memory photo 9" class="w-full h-full object-cover" loading="lazy">
+                    <img src="IMG_0107.JPG" alt="Memory photo 9" loading="lazy">
                     <div class="photo-overlay-glow"></div>
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                         <span class="text-white text-xs font-medium"><i class="fas fa-search-plus mr-1"></i> View</span>
@@ -459,14 +565,26 @@
             </div>
         </section>
 
-        <!-- 3. HEARTFELT TAGLISH LETTER CARD -->
+        <!-- 3. HEARTFELT TAGLISH LETTER CARD WITH ENVELOPE -->
         <section id="letter" class="space-y-4 sm:space-y-6 pt-2 sm:pt-4">
             <div class="text-center space-y-2 animate-fade-in-up">
                 <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-800">A Heartfelt Message For You</h2>
-                <p class="text-xs sm:text-sm text-gray-500">Tap to open your birthday letter</p>
+                <p class="text-xs sm:text-sm text-gray-500">Click on the envelope to open your birthday letter</p>
             </div>
 
-            <div id="letterCard" onclick="toggleLetter()" class="letter-card glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-10 cursor-pointer border border-roseGoldLight shadow-lg hover:shadow-xl transition-all duration-300 relative active:scale-95 transform hover:scale-105">
+            <!-- Envelope -->
+            <div id="envelopeContainer" class="envelope-wrapper flex justify-center">
+                <div id="envelope" class="envelope cursor-pointer" onclick="openEnvelope()">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-label">
+                        <i class="fas fa-envelope text-3xl"></i>
+                        <div class="text-sm mt-2">Click to Open</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Letter Content (Hidden Initially) -->
+            <div id="letterContent" class="letter-reveal hidden glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-10 border border-roseGoldLight shadow-lg hover:shadow-xl transition-all duration-300 relative">
                 <!-- Decorative Top Ribbon -->
                 <div class="absolute top-0 right-0 w-16 sm:w-24 h-16 sm:h-24 bg-gradient-to-bl from-roseGoldLight to-transparent rounded-bl-full pointer-events-none"></div>
 
@@ -477,16 +595,13 @@
                         </div>
                         <div>
                             <h3 class="font-serif font-bold text-gray-800 text-sm sm:text-lg">Para Sa'yo</h3>
-                            <p class="text-xs text-roseGold font-medium">Tap to read</p>
+                            <p class="text-xs text-roseGold font-medium">Your Birthday Message</p>
                         </div>
                     </div>
-                    <span class="text-xs px-3 py-1 rounded-full bg-roseGoldLight text-roseGold font-semibold group-hover:bg-roseGold group-hover:text-white transition-colors">
-                        <i class="fas fa-chevron-down text-xs"></i>
-                    </span>
                 </div>
 
                 <!-- Letter Content -->
-                <div id="letterBody" class="space-y-3 sm:space-y-4 pt-4 sm:pt-6 text-xs sm:text-base text-gray-700 leading-relaxed font-sans transition-all duration-500">
+                <div class="space-y-3 sm:space-y-4 pt-4 sm:pt-6 text-xs sm:text-base text-gray-700 leading-relaxed font-sans">
                     <p class="font-semibold text-roseGold font-serif text-base sm:text-lg">Happy Birthday, Rochelle! 🎂</p>
                     
                     <p>
@@ -609,6 +724,52 @@
     </div>
 
     <script>
+        // Cursor Trail Heart Effect
+        let lastX = 0;
+        let lastY = 0;
+        let lastTrailTime = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            lastX = e.clientX;
+            lastY = e.clientY;
+
+            // Create heart trail every 50ms
+            if (Date.now() - lastTrailTime > 50) {
+                createHeartTrail(e.clientX, e.clientY);
+                lastTrailTime = Date.now();
+            }
+        });
+
+        // Touch support for mobile
+        document.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                const touch = e.touches[0];
+                if (Date.now() - lastTrailTime > 50) {
+                    createHeartTrail(touch.clientX, touch.clientY);
+                    lastTrailTime = Date.now();
+                }
+            }
+        });
+
+        function createHeartTrail(x, y) {
+            const heart = document.createElement('div');
+            heart.className = 'cursor-trail-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            
+            // Random offset
+            const offsetX = (Math.random() - 0.5) * 30;
+            const offsetY = (Math.random() - 0.5) * 30;
+            heart.style.setProperty('--offset-x', offsetX + 'px');
+            heart.style.setProperty('--offset-y', offsetY + 'px');
+            
+            document.body.appendChild(heart);
+            
+            // Remove after animation
+            setTimeout(() => heart.remove(), 1500);
+        }
+
         // Background Music Player with Volume Control
         let bgMusic = document.getElementById('bgMusic');
         let isPlaying = false;
@@ -619,7 +780,7 @@
             const musicDot = document.getElementById('musicDot');
 
             if (!isPlaying) {
-                bgMusic.volume = 0.3; // Set volume to 30% for soft background music
+                bgMusic.volume = 0.3;
                 bgMusic.play().catch(err => console.log('Audio play error:', err));
                 isPlaying = true;
                 musicText.innerText = 'Playing';
@@ -634,14 +795,19 @@
             }
         }
 
-        // Toggle Letter Collapse
-        function toggleLetter() {
-            const letterBody = document.getElementById('letterBody');
-            if (letterBody.classList.contains('hidden')) {
-                letterBody.classList.remove('hidden');
-            } else {
-                letterBody.classList.add('hidden');
-            }
+        // Open Envelope Function
+        function openEnvelope() {
+            const envelope = document.getElementById('envelope');
+            const letterContent = document.getElementById('letterContent');
+            const envelopeContainer = document.getElementById('envelopeContainer');
+
+            envelope.classList.add('opened');
+            
+            setTimeout(() => {
+                envelopeContainer.style.display = 'none';
+                letterContent.classList.remove('hidden');
+                triggerConfetti();
+            }, 800);
         }
 
         // Lightbox Functions with Animation
